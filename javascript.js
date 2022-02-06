@@ -22,7 +22,7 @@ const buttons = document.querySelectorAll(`button`)
 console.log(buttons)
 let displayValue = 0
 let storedValue = 0
-let operator
+let operatorTextText
 
 function addFunc(a, b) {
     return a + b
@@ -37,37 +37,40 @@ function divideFunc(a, b) {
     return a / b
 }
 
-
 buttons.forEach((e) => {
     e.addEventListener('click', () => {
-        console.log(e)
         if (e.textContent < 10){
             input(e.textContent)
         }
         if (e.textContent === `+`) {
             storedValue = displayValue
             display.textContent = ``
-            operator = `+`
+            operatorText = `+`
         }
         if (e.textContent === `-`) {
             storedValue = displayValue
             display.textContent = ``
-            operator = `-`
+            operatorText = `-`
         }
         if (e.textContent === `*`) {
             storedValue = displayValue
             display.textContent = ``
-            operator = `*`
+            operatorText = `*`
         }
         if (e.textContent === `/`) {
             storedValue = displayValue
             display.textContent = ``
-            operator = `/`
+            operatorText = `/`
+        }
+        if (e.textContent === `C`) {
+            storedValue = displayValue
+            display.textContent = ``
+            operatorText = `C`
         }
         if (e.textContent === `=`) {
             storedValue = parseInt(storedValue, 10)
             displayValue = parseInt(displayValue, 10)
-            operate(operator)
+            operate(operatorText)
         }
     })
 })
@@ -76,21 +79,23 @@ function input(value) {
     display.textContent += value
     displayValue = display.textContent
     console.log(displayValue)
-    return displayValue
 }
 
-function operate(a) {
-    if (a === `+`) {
+function operate(operator) {
+    if (operator === `+`) {
         display.textContent = addFunc(storedValue, displayValue)
     }
-    if (a === `-`) {
+    if (operator === `-`) {
         display.textContent = subtractFunc(storedValue, displayValue)
     }
-    if (a === `*`) {
+    if (operator === `*`) {
         display.textContent = multiplyFunc(storedValue, displayValue)
     }
-    if (a === `/`) {
+    if (operator === `/`) {
         display.textContent = divideFunc(storedValue, displayValue)
+    }
+    if (operator === `C`) {
+
     }
     displayValue = display.textContent
     console.log(displayValue)
