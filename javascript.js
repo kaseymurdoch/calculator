@@ -87,9 +87,9 @@ buttons.forEach((e) => {
         else if (e.textContent === `+`|| e.textContent === `-`|| e.textContent === `/`|| e.textContent === `*`) {
             disableOp()
             if (operatorText !== ``) {
+                // If an operation has already completed and you want to operate on the result, wipe everything on log except the result
                 if (log.textContent.includes(`=`)) {
-                    log.textContent = ``
-                    console.log(log.textContent)
+                    log.textContent = `${displayValue}`
                 }
                 log.textContent += e.textContent
                 temp = operatorText
@@ -102,6 +102,10 @@ buttons.forEach((e) => {
                 enableNum()
             }
             else {
+                // If an operation has already completed and you want to operate on the result, wipe everything on log except the result
+                if (log.textContent.includes(`=`)) {
+                    log.textContent = `${displayValue}`
+                }
                 log.textContent += e.textContent
                 store(e.textContent)
                 enableNum()
@@ -113,7 +117,7 @@ buttons.forEach((e) => {
     })
 })
 
-// Value on screen becomes stored/erased, operator that was clicked is stored
+// Value on display becomes stored/erased, operator that was clicked is stored
 function store(value) {
     storedValue = displayValue
     display.textContent = ``
