@@ -20,7 +20,6 @@ const openParantheses = document.getElementById(`openParantheses`)
 const closeParantheses = document.getElementById(`closeParantheses`)
 const percent = document.getElementById(`percent`)
 const buttons = document.querySelectorAll(`button`)
-console.log(buttons)
 let displayValue = 0
 let storedValue = 0
 let operatorText = ``
@@ -36,12 +35,7 @@ function multiplyFunc(a, b) {
     return a * b
 }
 function divideFunc(a, b) {
-    if (b === 0) {
-        return `Infinity`
-    }
-    else {
-        return a / b
-    }
+    return a / b
 }
 
 // Iterates through each button and does something depending on which you click on
@@ -144,13 +138,8 @@ function operate(operator) {
         display.textContent = divideFunc(storedValue, displayValue)
     }
 
-    console.log(`After operation storedvalue: ${storedValue}`)
-    console.log(`After operation displayvalue: ${displayValue}`)
     operatorText = ``
-    storedValue = displayValue
     displayValue = display.textContent
-    console.log(`Ending storedvalue: ${storedValue}`)
-    console.log(`Ending displayvalue: ${displayValue}`)
     
     if (displayValue === `Infinity` || displayValue === `NaN`) {
         display.textContent = `Bruh that is illegal`

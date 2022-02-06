@@ -10,27 +10,37 @@ body {
     flex-direction: column;
     padding: 20px;
     width: 400px;
-    height: 300px;
+    height: 500px;
     gap: 10px;
+    border-radius: 20px;
+    border: solid purple 2px;
+    
 }
 
 #log {
-    display: flex;
-    justify-content: right;
     border: solid blue 2px;
+    
 }
 
 #display {
+    border: solid red 2px;
+
+}
+
+#log,
+#display {
     display: flex;
     justify-content: right;
-    border: solid red 2px;
+    border-radius: 10px;
+    height: 40px;
+    padding: 5px;
+    font-size: 30px;
 }
 
 .inputs {
     display: flex;
     flex: 1;
     gap: 5px;
-
 }
 
 .column {
@@ -41,5 +51,7 @@ body {
 }
 
 .column>button {
+    border: solid rgb(121, 97, 97) 2px;
+    border-radius: 10px;
     flex: 1;
 }
