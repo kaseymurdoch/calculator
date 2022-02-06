@@ -36,14 +36,19 @@ function multiplyFunc(a, b) {
     return a * b
 }
 function divideFunc(a, b) {
-    return a / b
+    if (b === 0) {
+        return `Infinity`
+    }
+    else {
+        return a / b
+    }
 }
 
 // Iterates through each button and does something depending on which you click on
 buttons.forEach((e) => {
     e.addEventListener('click', () => {
         let clickedButton = e.textContent
-        
+
         if (clickedButton < 10){
             log.textContent += clickedButton
             input(clickedButton)
@@ -73,6 +78,7 @@ buttons.forEach((e) => {
         }
         else if (clickedButton === `+`|| clickedButton === `-`|| clickedButton === `/`|| clickedButton === `*`) {
             disableOp()
+            // If an operator has already been clicked before, we make future operators act as equals signs as well
             if (operatorText !== ``) {
                 // If an operation has already completed and you want to operate on the result, wipe everything on log except the result
                 if (log.textContent.includes(`=`)) {
@@ -89,6 +95,9 @@ buttons.forEach((e) => {
             else {
                 // If an operation has already completed and you want to operate on the result, wipe everything on log except the result
                 if (log.textContent.includes(`=`)) {
+                    if (displayValue === `Infinity`) {
+                        displayValue = `0`
+                    }
                     log.textContent = `${displayValue}`
                 }
                 log.textContent += clickedButton
@@ -142,6 +151,10 @@ function operate(operator) {
     displayValue = display.textContent
     console.log(`Ending storedvalue: ${storedValue}`)
     console.log(`Ending displayvalue: ${displayValue}`)
+    
+    if (displayValue === `Infinity`) {
+        display.textContent = `Bruh that is illegal`
+    }
 }
 function disableOp() {
     divide.disabled = true
