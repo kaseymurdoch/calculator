@@ -45,6 +45,7 @@ buttons.forEach((e) => {
         if (e.textContent < 10){
             log.textContent += e.textContent
             input(e.textContent)
+            enableOp()
         }
         // else if (e.textContent === `+`) {
             
@@ -82,7 +83,8 @@ buttons.forEach((e) => {
 
             }
         }
-        else {
+        else if (e.textContent === `+`|| e.textContent === `-`|| e.textContent === `/`|| e.textContent === `*`) {
+            disableOp()
             if (operatorText !== ``) {
                 if (log.textContent.includes(`=`)) {
                     log.textContent = ``
@@ -103,6 +105,9 @@ buttons.forEach((e) => {
                 store(e.textContent)
                 enableNum()
             }
+        }
+        else {
+            return
         }
     })
 })
@@ -145,7 +150,20 @@ function operate(operator) {
     console.log(`Ending storedvalue: ${storedValue}`)
     console.log(`Ending displayvalue: ${displayValue}`)
 }
-
+function disableOp() {
+    divide.disabled = true
+    add.disabled = true
+    subtract.disabled = true
+    multiply.disabled = true
+    equals.disabled = true
+}
+function enableOp() {
+    divide.disabled = false
+    add.disabled = false
+    subtract.disabled = false
+    multiply.disabled = false
+    equals.disabled = false
+}
 function disableNum() {
     one.disabled = true
     two.disabled = true
@@ -157,6 +175,7 @@ function disableNum() {
     eight.disabled = true
     nine.disabled = true
     zero.disabled = true
+    decimal.disabled = true
 }
 function enableNum() {
     one.disabled = false
@@ -169,4 +188,5 @@ function enableNum() {
     eight.disabled = false
     zero.disabled = false
     nine.disabled = false
+    decimal.disabled = false
 }
