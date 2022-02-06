@@ -1,0 +1,38 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+#calculator {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    width: 400px;
+    height: 300px;
+    gap: 10px;
+}
+
+#display {
+    display: flex;
+    justify-content: right;
+}
+
+.inputs {
+    display: flex;
+    flex: 1;
+    gap: 5px;
+
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: 5px;
+}
+
+.column>button {
+    flex: 1;
+}
