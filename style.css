@@ -14,9 +14,16 @@ body {
     gap: 10px;
 }
 
+#log {
+    display: flex;
+    justify-content: right;
+    border: solid blue 2px;
+}
+
 #display {
     display: flex;
     justify-content: right;
+    border: solid red 2px;
 }
 
 .inputs {
