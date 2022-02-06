@@ -66,6 +66,7 @@ buttons.forEach((e) => {
             displayValue = `0`
             log.textContent = ``
             enableNum()
+            enableOp()
         }
         else if (e.textContent === `=`) {
             // If an operation has already completed. Do nothing
