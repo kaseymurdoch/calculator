@@ -20,6 +20,9 @@ const closeParantheses = document.getElementById(`closeParantheses`)
 const percent = document.getElementById(`percent`)
 const buttons = document.querySelectorAll(`button`)
 console.log(buttons)
+let displayValue = 0
+let storedValue = 0
+let operator
 
 function addFunc(a, b) {
     return a + b
@@ -35,15 +38,60 @@ function divideFunc(a, b) {
 }
 
 
-function input(value) {
-    display.textContent += value
-}
 buttons.forEach((e) => {
     e.addEventListener('click', () => {
+        console.log(e)
         if (e.textContent < 10){
             input(e.textContent)
         }
-
+        if (e.textContent === `+`) {
+            storedValue = displayValue
+            display.textContent = ``
+            operator = `+`
+        }
+        if (e.textContent === `-`) {
+            storedValue = displayValue
+            display.textContent = ``
+            operator = `-`
+        }
+        if (e.textContent === `*`) {
+            storedValue = displayValue
+            display.textContent = ``
+            operator = `*`
+        }
+        if (e.textContent === `/`) {
+            storedValue = displayValue
+            display.textContent = ``
+            operator = `/`
+        }
+        if (e.textContent === `=`) {
+            storedValue = parseInt(storedValue, 10)
+            displayValue = parseInt(displayValue, 10)
+            operate(operator)
+        }
     })
 })
-    
+
+function input(value) {
+    display.textContent += value
+    displayValue = display.textContent
+    console.log(displayValue)
+    return displayValue
+}
+
+function operate(a) {
+    if (a === `+`) {
+        display.textContent = addFunc(storedValue, displayValue)
+    }
+    if (a === `-`) {
+        display.textContent = subtractFunc(storedValue, displayValue)
+    }
+    if (a === `*`) {
+        display.textContent = multiplyFunc(storedValue, displayValue)
+    }
+    if (a === `/`) {
+        display.textContent = divideFunc(storedValue, displayValue)
+    }
+    displayValue = display.textContent
+    console.log(displayValue)
+}
