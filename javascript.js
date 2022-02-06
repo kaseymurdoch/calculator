@@ -42,33 +42,22 @@ function divideFunc(a, b) {
 // Iterates through each button and does something depending on which you click on
 buttons.forEach((e) => {
     e.addEventListener('click', () => {
-        if (e.textContent < 10){
-            log.textContent += e.textContent
-            input(e.textContent)
+        let clickedButton = e.textContent
+        
+        if (clickedButton < 10){
+            log.textContent += clickedButton
+            input(clickedButton)
             enableOp()
         }
-        // else if (e.textContent === `+`) {
-            
-        //     store(e.textContent)
-        // }
-        // else if (e.textContent === `-`) {
-        //     store(e.textContent)
-        // }
-        // else if (e.textContent === `*`) {
-        //     store(e.textContent)
-        // }
-        // else if (e.textContent === `/`) {
-        //     store(e.textContent)
-        // }
-        else if (e.textContent === `C`) {
-            store(e.textContent)
+        else if (clickedButton === `C`) {
+            store(clickedButton)
             operatorText = ``
             displayValue = `0`
             log.textContent = ``
             enableNum()
             enableOp()
         }
-        else if (e.textContent === `=`) {
+        else if (clickedButton === `=`) {
             // If an operation has already completed. Do nothing
             if (operatorText === ``) {
                 return
@@ -76,29 +65,25 @@ buttons.forEach((e) => {
             else {
                 // Converts the display strings to numbers then operates with the given operator
                 disableNum()
-                log.textContent += e.textContent
-                storedValue = parseInt(storedValue, 10)
-                displayValue = parseInt(displayValue, 10)
+                log.textContent += clickedButton
                 operate(operatorText)
                 log.textContent += displayValue
 
             }
         }
-        else if (e.textContent === `+`|| e.textContent === `-`|| e.textContent === `/`|| e.textContent === `*`) {
+        else if (clickedButton === `+`|| clickedButton === `-`|| clickedButton === `/`|| clickedButton === `*`) {
             disableOp()
             if (operatorText !== ``) {
                 // If an operation has already completed and you want to operate on the result, wipe everything on log except the result
                 if (log.textContent.includes(`=`)) {
                     log.textContent = `${displayValue}`
                 }
-                log.textContent += e.textContent
-                temp = operatorText
-                console.log(temp)
-                storedValue = parseInt(storedValue, 10)
-                displayValue = parseInt(displayValue, 10)
+                log.textContent += clickedButton
+                // Temp makes sure operate() doesnt clear the operator stored value. Does not seem like this was needed since store() will make operatorText = (e)
+                // temp = operatorText
                 operate(operatorText)
-                operatorText = temp
-                store(e.textContent)
+                // operatorText = temp
+                store(clickedButton)
                 enableNum()
             }
             else {
@@ -106,8 +91,8 @@ buttons.forEach((e) => {
                 if (log.textContent.includes(`=`)) {
                     log.textContent = `${displayValue}`
                 }
-                log.textContent += e.textContent
-                store(e.textContent)
+                log.textContent += clickedButton
+                store(clickedButton)
                 enableNum()
             }
         }
@@ -117,6 +102,7 @@ buttons.forEach((e) => {
     })
 })
 
+
 // Value on display becomes stored/erased, operator that was clicked is stored
 function store(value) {
     storedValue = displayValue
@@ -124,6 +110,7 @@ function store(value) {
     operatorText = value
 }
 
+// Clicking on number will add it to display and tack onto displayValue
 function input(value) {
     display.textContent += value
     displayValue = display.textContent
@@ -131,10 +118,12 @@ function input(value) {
 }
 
 function operate(operator) {
+    // Convert display strings to numbers that can be operated on
+    storedValue = parseInt(storedValue, 10)
+    displayValue = parseInt(displayValue, 10)
+    // Use the numbers to operate then display them
     if (operator === `+`) {
-        display.textContent = addFunc(storedValue, displayValue)
-        console.log(`After operation storedvalue: ${storedValue}`)
-        console.log(`After operation displayvalue: ${displayValue}`)
+        display.textContent = addFunc(storedValue, displayValue)   
     }
     if (operator === `-`) {
         display.textContent = subtractFunc(storedValue, displayValue)
@@ -145,10 +134,9 @@ function operate(operator) {
     if (operator === `/`) {
         display.textContent = divideFunc(storedValue, displayValue)
     }
-    if (operator === `C`) {
 
-    }
-
+    console.log(`After operation storedvalue: ${storedValue}`)
+    console.log(`After operation displayvalue: ${displayValue}`)
     operatorText = ``
     storedValue = displayValue
     displayValue = display.textContent
