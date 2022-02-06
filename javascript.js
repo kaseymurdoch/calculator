@@ -95,7 +95,7 @@ buttons.forEach((e) => {
             else {
                 // If an operation has already completed and you want to operate on the result, wipe everything on log except the result
                 if (log.textContent.includes(`=`)) {
-                    if (displayValue === `Infinity`) {
+                    if (displayValue === `Infinity` || displayValue === `NaN`) {
                         displayValue = `0`
                     }
                     log.textContent = `${displayValue}`
@@ -152,7 +152,7 @@ function operate(operator) {
     console.log(`Ending storedvalue: ${storedValue}`)
     console.log(`Ending displayvalue: ${displayValue}`)
     
-    if (displayValue === `Infinity`) {
+    if (displayValue === `Infinity` || displayValue === `NaN`) {
         display.textContent = `Bruh that is illegal`
     }
 }
