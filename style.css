@@ -64,6 +64,7 @@ body {
     background-color: rgb(98, 98, 98);
     color: white;
     font-size: 40px;
+    padding: 5px;
 }
 
 #decimal, 
