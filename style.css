@@ -3,7 +3,7 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: rgb(155, 155, 155);
+    background-color: rgb(182, 182, 182);
 }
 
 #calculator {
@@ -39,6 +39,9 @@ body {
     background-color: rgb(92, 92, 92);
     color: white;
     border: solid rgb(0, 0, 0) 2px;
+    overflow: hidden;
+    word-break: break-all;
+    flex: 1;
 }
 
 .inputs {
