@@ -16,8 +16,8 @@ const multiply = document.getElementById(`multiply`)
 const divide = document.getElementById(`divide`)
 const equals = document.getElementById(`equals`)
 const decimal = document.getElementById(`decimal`)
-const openParantheses = document.getElementById(`openParantheses`)
-const closeParantheses = document.getElementById(`closeParantheses`)
+const openParantheses = document.getElementById(`openParentheses`)
+const closeParantheses = document.getElementById(`closeParentheses`)
 const percent = document.getElementById(`percent`)
 const buttons = document.querySelectorAll(`button`)
 let displayValue = 0
@@ -48,7 +48,7 @@ buttons.forEach((e) => {
             input(clickedButton)
             enableOp()
         }
-        else if (clickedButton === `C`) {
+        if (clickedButton === `C`) {
             store(clickedButton)
             operatorText = ``
             displayValue = `0`
@@ -56,7 +56,7 @@ buttons.forEach((e) => {
             enableNum()
             enableOp()
         }
-        else if (clickedButton === `=`) {
+        if (clickedButton === `=`) {
             // If an operation has already completed. Do nothing
             if (operatorText === ``) {
                 return
@@ -70,7 +70,7 @@ buttons.forEach((e) => {
 
             }
         }
-        else if (clickedButton === `+`|| clickedButton === `-`|| clickedButton === `/`|| clickedButton === `*`) {
+        if (clickedButton === `+`|| clickedButton === `-`|| clickedButton === `/`|| clickedButton === `*`) {
             disableOp()
             // If an operator has already been clicked before, we make future operators act as equals signs as well
             if (operatorText !== ``) {
@@ -98,9 +98,6 @@ buttons.forEach((e) => {
                 store(clickedButton)
                 enableNum()
             }
-        }
-        else {
-            return
         }
     })
 })

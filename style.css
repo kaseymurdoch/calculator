@@ -3,6 +3,7 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
+    background-color: rgb(155, 155, 155);
 }
 
 #calculator {
@@ -13,17 +14,17 @@ body {
     height: 500px;
     gap: 10px;
     border-radius: 20px;
-    border: solid purple 2px;
-    
+    border: solid rgb(0, 0, 0) 2px;
+    /* background-color: rgb(0, 182, 206); */
+    background-image: linear-gradient(rgb(0, 182, 206, .5), rgb(219, 56, 206, 0.7))
 }
 
 #log {
-    border: solid blue 2px;
+    
     
 }
 
 #display {
-    border: solid red 2px;
 
 }
 
@@ -35,6 +36,9 @@ body {
     height: 40px;
     padding: 5px;
     font-size: 30px;
+    background-color: rgb(92, 92, 92);
+    color: white;
+    border: solid rgb(0, 0, 0) 2px;
 }
 
 .inputs {
@@ -51,7 +55,18 @@ body {
 }
 
 .column>button {
-    border: solid rgb(121, 97, 97) 2px;
+    border: solid rgb(0, 0, 0) 2px;
     border-radius: 10px;
     flex: 1;
+    background-color: rgb(98, 98, 98);
+    color: white;
+    font-size: 40px;
+}
+
+#decimal, 
+#openParentheses, 
+#closeParentheses, 
+#percent {
+    background-color: rgba(255, 255, 255, 0);
+    border: solid rgba(0, 0, 0, 0) 2px;
 }
