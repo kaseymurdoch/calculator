@@ -114,7 +114,6 @@ function store(value) {
 function input(value) {
     display.textContent += value
     displayValue = display.textContent
-    console.log(displayValue)
 }
 
 function operate(operator) {

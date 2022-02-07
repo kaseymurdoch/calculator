@@ -33,7 +33,7 @@ body {
     display: flex;
     justify-content: right;
     border-radius: 10px;
-    height: 40px;
+    min-height: 40px;
     padding: 5px;
     font-size: 30px;
     background-color: rgb(92, 92, 92);
